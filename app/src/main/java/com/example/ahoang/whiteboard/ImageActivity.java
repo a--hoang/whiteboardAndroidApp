@@ -61,12 +61,13 @@ public class ImageActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             bmp = (Bitmap) data.getExtras().get("data");
+            //bmp = BitmapFactory.decodeFile(mCurrentPhotoPath);
             localImageView.setImageBitmap(bmp);
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
 //            BitmapFactory.Options options=new BitmapFactory.Options();
 //            options.inScaled = false;
 //            options.inSampleSize=1;
-            bmp=Bitmap.createScaledBitmap(bmp, 600, 400, true);
+            bmp=Bitmap.createScaledBitmap(bmp, 1200, 800, true);
             bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
             bmp.recycle();
             byte[] byteArray = stream.toByteArray();
@@ -114,4 +115,5 @@ public class ImageActivity extends Activity {
             }
         }
     }
+
 }
